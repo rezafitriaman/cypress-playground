@@ -70,5 +70,10 @@ When('I type a {string} and a comment {string}', (email, comment) => {
 })
 
 Then('I should be presented with header text {string}', (message) => {
-
+    // Check if the message exists in either <h1> or <body>
+    cy.get('h1, body').should(($elements) => {
+        // Use jQuery's :contains selector to check for the message
+        const found = $elements.filter(`:contains('${message}')`).length > 0;
+        expect(found).to.be.true;
+    });
 })
