@@ -1,5 +1,5 @@
 // ***********************************************
-// This example commands.js shows you how to
+// This example commands.ts shows you how to
 // create various custom commands and overwrite
 // existing commands.
 //
@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('clickAndOpenLink_InSameTab', (selector) => {
+    cy.log(`Clicking element with selector: ${selector} and opening in the same tab`);
+    cy.get(selector)
+        .should('exist') // Ensure the element exists
+        .invoke('removeAttr', 'target'); // Remove the target attribute
+
+    cy.get(selector).click(); // Click the element
+});
