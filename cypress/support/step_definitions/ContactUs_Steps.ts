@@ -4,9 +4,9 @@ import Contact_Us_PO from "../page_objects/Contact_Us_PO";
 
 const contactus_Page = new Contact_Us_PO();
 
-When('I type a first name', () => {
+When('I type a first name {string}', (name: string) => {
     //cy.get('[name="first_name"]').type("Joe");
-    contactus_Page.type_FirstName("Joe");
+    contactus_Page.type_FirstName(name);
 })
 
 When('I type a last name', () => {

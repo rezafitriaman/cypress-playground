@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "CommonJS",
+    "baseUrl": "./",  // Relative to cypress/ directory
+    "target": "es6",  // Cypress recommends ES6+
+    "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "lib": ["es6", "dom"],
+    "types": ["cypress", "node"],
+    "paths": {
+      "@/*": ["../src/*"],  // Map to your app code (if needed)
+      "@support/*": ["./support/*"]  // Example Cypress-specific alias
+    }
   },
   "include": ["**/*.ts"]
 }
